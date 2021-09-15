@@ -16,8 +16,8 @@ davisdata <- read.csv(file="UCDavis.csv")
 ```
 ## Our Goal is to answer this question Is there a difference between the alcohol consumed between the row
 ## you choose to sit in??
-$H_0$ there is no difference in alcohol consumption based on where one sits in class. 
-$H_A$ there is a difference in alcohol consumption based where one sits in class
+$H_0$ there is no difference in alcohol consumption based on where one sits in class.   
+$H_A$ there is a difference in alcohol consumption based where one sits in class  
 ## Now with ggplot - first select the basic data
 
 ```{r}
@@ -50,6 +50,13 @@ model1 <- aov(alcohol~Seat,data=davisdata)
 summary.aov(model1)
 ```
 
+```{r}
+plot(TukeyHSD(model1))
+```
+first we got a p-values of 0.00 small so we conclude we reject $H_0$; therer is a difference in alcohol consumption based on where one sits. 
+
+turkey test shows 
+
 ## Conclusions
 
-
+i reject the null hypothesis there is a difference in the amount of alcohol consumption between the people who sit in the middle to back 
