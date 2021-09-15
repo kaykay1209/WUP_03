@@ -18,6 +18,7 @@ davisdata <- read.csv(file="UCDavis.csv")
 ## you choose to sit in??
 $H_0$ there is no difference in alcohol consumption based on where one sits in class.   
 $H_A$ there is a difference in alcohol consumption based where one sits in class  
+
 ## Now with ggplot - first select the basic data
 
 ```{r}
@@ -28,7 +29,8 @@ basicCN <- ggplot(davisdata,aes(y=alcohol,x=Seat))
 ```{r}
 basicCN + geom_boxplot()
 ```
-the boxplot shows that the people in the back tend to consume more alcohol. the front and middle people seem to have little to no difference. 
+
+the boxplot shows that the people in the back tend to consume more alcohol. the people in the front and middle people seem to have little to no difference.   
   
 ### get fancy  
 
@@ -39,9 +41,14 @@ basicCN + geom_boxplot(notch=TRUE,outlier.color = "red") + stat_boxplot(geom ='e
 ## Numerical Summarys 
 
 
+
 ```{r}
 favstats(alcohol~Seat,data=ucdavis1)
 ```
+
+
+this graph indicates that the people in the back are at a higher numerical number representing the difference in alcohol consumption whereas people in the front- middle show no difference in the amount of alcohol consumption . 
+
 
 ## Inferential Tests
 
@@ -53,10 +60,11 @@ summary.aov(model1)
 ```{r}
 plot(TukeyHSD(model1))
 ```
-first we got a p-values of 0.00 small so we conclude we reject $H_0$; therer is a difference in alcohol consumption based on where one sits. 
 
-turkey test shows 
+first we got a p-values of 0.00 small so we conclude we reject $H_0$; there is a difference in alcohol consumption based on where one sits. turkey test shows that people in the middle back consume more alcohol than people in the front. the graph concludes that the people in middle front have no difference in the mean level of seat 
+but the people in the middle-back do have a difference. 
+
 
 ## Conclusions
 
-i reject the null hypothesis there is a difference in the amount of alcohol consumption between the people who sit in the middle to back 
+people who sit in the back drink significantly more than those who sit in the middle or front of the class we reject the null hypothesis because there is a difference in the amount of alcohol consumption between the people who sit in the back. 
